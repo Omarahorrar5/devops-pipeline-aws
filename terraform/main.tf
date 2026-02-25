@@ -74,11 +74,10 @@ resource "aws_key_pair" "test_auth" {
 
 resource "aws_instance" "dev_node" {
   ami                    = data.aws_ami.server_ami.id
-  instance_type          = "t3.micro"
+  instance_type          = "t3.small"
   key_name               = aws_key_pair.test_auth.id
   vpc_security_group_ids = [aws_security_group.test_sg.id]
   subnet_id              = aws_subnet.test_public_subnet.id
-  user_data              = file("userdata.tpl")
 
   tags = {
     Name = "dev-node"
