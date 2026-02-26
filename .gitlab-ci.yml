@@ -5,7 +5,7 @@ stages:
 variables:
   IMAGE_NAME: $DOCKER_USERNAME/devops-pipeline-aws
 
-# STAGE 1 — BUILD & PUSH DOCKER IMAGE
+# STAGE 1 — BUILD & PUSH DOCKER IMAGE TO DOCKERHUB
 
 build:
   stage: build
