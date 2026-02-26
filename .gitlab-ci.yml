@@ -19,6 +19,8 @@ build:
 deploy:
   stage: deploy
   image: python:3.11
+  variables:
+    ANSIBLE_HOST_KEY_CHECKING: "False"
   before_script:
     - pip install ansible -q
     - mkdir -p ~/.ssh
