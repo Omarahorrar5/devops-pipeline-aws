@@ -2,11 +2,6 @@ stages:
   - build
   - deploy
 
-variables:
-  IMAGE_NAME: $DOCKER_USERNAME/devops-pipeline-aws
-
-# STAGE 1 — BUILD & PUSH DOCKER IMAGE TO DOCKERHUB
-
 build:
   stage: build
   image: docker:24
@@ -15,10 +10,8 @@ build:
   before_script:
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   script:
-    - docker build -f docker/Dockerfile -t $IMAGE_NAME:latest ./app
-    - docker push $IMAGE_NAME:latest
-
-# STAGE 2 — DEPLOY VIA ANSIBLE
+    - docker build -f docker/Dockerfile -t $DOCKER_USERNAME/devops-pipeline-aws:latest ./app
+    - docker push $DOCKER_USERNAME/devops-pipeline-aws:latest
 
 deploy:
   stage: deploy
