@@ -58,14 +58,14 @@
         chmod +x kubectl
         mv kubectl /usr/local/bin/
       args:
-        creates: /usr/local/bin/kubectl
+        executable: /bin/bash
 
     - name: Install Minikube
       shell: |
         curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
         install minikube-linux-amd64 /usr/local/bin/minikube
       args:
-        creates: /usr/local/bin/minikube
+        executable: /bin/bash
 
     - name: Reset SSH connection to pick up docker group
       meta: reset_connection
